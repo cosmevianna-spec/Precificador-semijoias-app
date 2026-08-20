@@ -111,6 +111,12 @@ h2 {
   font-family: inherit;
 }
 
+#btn-tema {
+  background: #ffffff;
+  color: #1a1510;
+  border-color: #d4c8b8;
+}
+
 .view {
   display: grid;
   gap: 12px;
@@ -140,8 +146,8 @@ h2 {
 }
 
 .card-ouro {
-  background: #fff6c8;
-  border-color: #ead56a;
+  background: #fff2cc;
+  border-color: #c9a227;
 }
 
 .ouro-compacto {
@@ -359,8 +365,8 @@ details summary small {
 }
 
 .card-ouro .field-row {
-  background: #fff;
-  border-color: #ead56a;
+  background: #fff2cc;
+  border-color: #c9a227;
 }
 
 .card-extras .field-row {
@@ -377,15 +383,15 @@ details summary small {
 }
 
 .card-ouro .ouro-inline > span {
-  color: #1a1510;
+  color: #7f6000;
 }
 
 .card-ouro .prefix {
-  color: #5c534a;
+  color: #7f6000;
 }
 
 .card-ouro .ouro-row input {
-  color: #1a1510;
+  color: #7f6000;
 }
 
 .linha-custo dd {
@@ -657,6 +663,12 @@ html[data-tema="noite"] .topbar h1 {
 
 html[data-tema="noite"] .nav-btn {
   background: #241f1b;
+  color: #f3eee7;
+  border-color: #a3988c;
+}
+
+html[data-tema="noite"] #btn-tema {
+  background: #1a1510;
   color: #f3eee7;
   border-color: #a3988c;
 }

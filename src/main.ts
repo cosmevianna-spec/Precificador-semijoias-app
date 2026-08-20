@@ -41,10 +41,10 @@ function atualizarNavegacao(): void {
   const configAberta = telaConfig();
   $("view-calculadora").classList.toggle("hidden", configAberta);
   $("view-config").classList.toggle("hidden", !configAberta);
-  $("titulo-tela").textContent = configAberta ? "Configurações" : "Calculadora";
+  $("titulo-tela").textContent = configAberta ? "Configurações" : "Precificador de Semijoias";
   const link = $("link-nav") as HTMLAnchorElement;
   link.href = configAberta ? "#/" : "#/config";
-  link.textContent = configAberta ? "Calculadora" : "Configurações";
+  link.textContent = configAberta ? "Precificador de Semijoias" : "Configurações";
   if (configAberta) {
     $("preco-final").classList.add("hidden");
   }
@@ -389,7 +389,7 @@ function aplicarTema(tema: Tema): void {
   const botao = $("btn-tema") as HTMLButtonElement;
   const ehNoite = tema === "noite";
   botao.setAttribute("aria-pressed", String(ehNoite));
-  botao.textContent = ehNoite ? "☀ Dia" : "☾ Noite";
+  botao.textContent = ehNoite ? "☾ Noite" : "☀ Dia";
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta) {
     meta.setAttribute("content", ehNoite ? "#161410" : "#f5f2ec");
