@@ -392,7 +392,7 @@ function aplicarTema(tema: Tema): void {
   botao.textContent = ehNoite ? "☀ Dia" : "☾ Noite";
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta) {
-    meta.setAttribute("content", ehNoite ? "#161410" : "#f3eee7");
+    meta.setAttribute("content", ehNoite ? "#161410" : "#f5f2ec");
   }
 }
 

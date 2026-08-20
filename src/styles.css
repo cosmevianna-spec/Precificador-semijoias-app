@@ -1,13 +1,13 @@
 :root {
   color-scheme: light;
-  --bg: #f3eee7;
-  --surface: #fffcf8;
+  --bg: #f5f2ec;
+  --surface: #ffffff;
   --ink: #1a1510;
   --muted: #6b6158;
   --line: #e4d8c8;
   --accent: #8a5a24;
   --field-bg: #fff;
-  --chip-on: #1a1510;
+  --chip-on: #5b9bd5;
   --chip-on-text: #fff;
   --final-bg: #375623;
   --final-gold: #e8f5d0;
@@ -272,8 +272,8 @@ select {
 
 .campo-destaque .field-row {
   min-height: 56px;
-  background: #e8f5d0;
-  border-color: #8fbc5a;
+  background: #e2f0d9;
+  border-color: #70ad47;
 }
 
 .campo-destaque .field-row input {
@@ -296,7 +296,8 @@ select {
 }
 
 .campo-secundario .field-row {
-  background: #f4efe8;
+  background: #fff2cc;
+  border-color: #c9a227;
   min-height: 44px;
 }
 
@@ -306,6 +307,12 @@ select {
 
 .campo-secundario .suffix {
   color: #5c534a;
+}
+
+.campo-milesimo .chip {
+  background: #DDEBF7;
+  border-color: #5b9bd5;
+  color: #1a1510;
 }
 
 .aviso-preenchimento {
@@ -321,20 +328,20 @@ details summary small {
 }
 
 .card-extras {
-  background: #fdecea;
-  border-color: #e8b4ae;
+  background: #fce4d6;
+  border-color: #c0504d;
   color: #1a1510;
 }
 
 .card-banho {
-  background: #eaf3fb;
-  border-color: #9ec3dd;
+  background: #DDEBF7;
+  border-color: #5b9bd5;
   color: #1a1510;
 }
 
 .resultado {
-  background: #fff8f6;
-  border-color: #e8b4ae;
+  background: #fce4d6;
+  border-color: #c0504d;
   color: #1a1510;
 }
 
@@ -358,7 +365,7 @@ details summary small {
 
 .card-extras .field-row {
   background: #fff;
-  border-color: #e8b4ae;
+  border-color: #c0504d;
 }
 
 .card-extras .field-row input {
@@ -382,7 +389,7 @@ details summary small {
 }
 
 .linha-custo dd {
-  color: #9b1c1c;
+  color: #9c0006;
 }
 
 .linha-total {
@@ -391,13 +398,13 @@ details summary small {
 
 .linha-total dt,
 .linha-total dd {
-  color: #9b1c1c;
+  color: #9c0006;
   font-weight: 700;
   font-size: 1.08rem;
 }
 
 .linha-venda {
-  background: #e8f5d0;
+  background: #e2f0d9;
   margin: 8px -8px -4px;
   padding: 12px 8px !important;
   border-bottom: 0 !important;
@@ -406,7 +413,7 @@ details summary small {
 
 .linha-venda dt,
 .linha-venda dd {
-  color: #1f5c1f;
+  color: #375623;
   font-weight: 700;
   font-size: 1.08rem;
 }
@@ -425,10 +432,10 @@ details summary small {
 
 .chip {
   min-height: 48px;
-  border: 1px solid var(--line);
+  border: 1px solid #5b9bd5;
   border-radius: 12px;
-  background: var(--field-bg);
-  color: var(--ink);
+  background: #DDEBF7;
+  color: #1a1510;
   font-size: 1.05rem;
 }
 
@@ -545,7 +552,7 @@ details[open] summary {
 }
 
 .tabela-banho tr.selecionada td {
-  background: #f3e6d4;
+  background: #DDEBF7;
 }
 
 .tabela-banho .celula-indice {
@@ -556,9 +563,9 @@ details[open] summary {
   width: 100%;
   min-height: 44px;
   padding: 0 8px;
-  border: 1px solid #9ccc65;
+  border: 1px solid #70ad47;
   border-radius: 8px;
-  background: #e8f5d0;
+  background: #e2f0d9;
   color: #1a1510;
   font-size: 16px;
   text-align: right;
@@ -567,8 +574,8 @@ details[open] summary {
 
 .tabela-banho .celula-custo {
   font-weight: 700;
-  color: #7a1212;
-  background: #ffd6d6;
+  color: #9c0006;
+  background: #fce4d6;
   white-space: nowrap;
 }
 
