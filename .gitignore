@@ -1,0 +1,24 @@
+node_modules/
+dist/
+.vite/
+coverage/
+
+# Planilha privada de referência — não publicar
+documentos/
+*.xlsx
+*.xls
+
+# Segredos e arquivos locais
+.env
+.env.*
+*.local
+*.pem
+*.key
+
+# Editor e sistema
+.cursor/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log

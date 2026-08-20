@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"
+    />
+    <meta name="theme-color" content="#f3eee7" />
+    <meta name="description" content="Calculadora de precificação de semijoias" />
+    <title>Precificador de Semijoias</title>
+    <script>
+      try {
+        document.documentElement.dataset.tema =
+          localStorage.getItem("precificador-semijoias-v1-tema") === "noite" ? "noite" : "dia";
+      } catch (erro) {
+        document.documentElement.dataset.tema = "dia";
+      }
+    </script>
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <div id="app" class="app">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">V1</p>
+          <h1 id="titulo-tela">Calculadora</h1>
+        </div>
+        <div class="topbar-acoes">
+          <button type="button" id="btn-tema" class="nav-btn" aria-pressed="false">
+            Noite
+          </button>
+          <a id="link-nav" class="nav-btn" href="#/config" aria-label="Abrir configurações">
+            Configurações
+          </a>
+        </div>
+      </header>
+
+      <main id="view-calculadora" class="view calc-layout">
+        <section class="card card-ouro calc-span ouro-compacto" aria-label="Ouro do dia">
+          <label class="ouro-inline">
+            <span>Ouro do dia</span>
+            <div class="field-row ouro-row">
+              <span class="prefix">R$</span>
+              <input
+                id="ouro-do-dia"
+                type="text"
+                inputmode="decimal"
+                enterkeyhint="next"
+                autocomplete="off"
+                autocapitalize="off"
+                autocorrect="off"
+                spellcheck="false"
+              />
+            </div>
+          </label>
+          <p class="hint">Informativo · não entra no cálculo</p>
+        </section>
+
+        <div class="calc-col">
+          <form id="form-calc" class="card campos" aria-label="Dados da peça">
+            <label class="field campo-destaque">
+              <span>Peso bruto</span>
+              <div class="field-row">
+                <input
+                  id="peso"
+                  type="text"
+                  inputmode="decimal"
+                  enterkeyhint="next"
+                  autocomplete="off"
+                  autocapitalize="off"
+                  autocorrect="off"
+                  spellcheck="false"
+                  placeholder="0,00"
+                />
+                <span class="suffix">g</span>
+              </div>
+            </label>
+
+            <fieldset class="field">
+              <legend>Milésimo / Espessura</legend>
+              <div id="milesimos" class="chips" role="radiogroup" aria-label="Milésimo"></div>
+            </fieldset>
+
+            <label class="field campo-destaque">
+              <span>Preço do produto bruto</span>
+              <div class="field-row">
+                <span class="prefix">R$</span>
+                <input
+                  id="preco-bruto"
+                  type="text"
+                  inputmode="decimal"
+                  enterkeyhint="next"
+                  autocomplete="off"
+                  autocapitalize="off"
+                  autocorrect="off"
+                  spellcheck="false"
+                  placeholder="0,00"
+                />
+              </div>
+            </label>
+
+            <label class="field campo-secundario">
+              <span>Fator de venda</span>
+              <div class="field-row">
+                <input
+                  id="fator"
+                  type="text"
+                  inputmode="decimal"
+                  enterkeyhint="done"
+                  autocomplete="off"
+                  autocapitalize="off"
+                  autocorrect="off"
+                  spellcheck="false"
+                  placeholder="300"
+                />
+                <span class="suffix">%</span>
+              </div>
+            </label>
+          </form>
+
+          <details class="card card-extras" id="custos-adicionais">
+            <summary>Custos adicionais <small id="resumo-extras"></small></summary>
+            <div class="stack">
+              <label class="field">
+                <span>Tag</span>
+                <div class="field-row">
+                  <span class="prefix">R$</span>
+                  <input id="tag" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" autocapitalize="off" spellcheck="false" />
+                </div>
+              </label>
+              <label class="field">
+                <span>Certificado de garantia</span>
+                <div class="field-row">
+                  <span class="prefix">R$</span>
+                  <input id="certificado" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" autocapitalize="off" spellcheck="false" />
+                </div>
+              </label>
+              <label class="field">
+                <span>Saquinho plástico</span>
+                <div class="field-row">
+                  <span class="prefix">R$</span>
+                  <input id="saquinho" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" autocapitalize="off" spellcheck="false" />
+                </div>
+              </label>
+              <label class="field">
+                <span>Sacola para presente</span>
+                <div class="field-row">
+                  <span class="prefix">R$</span>
+                  <input id="sacola" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" autocapitalize="off" spellcheck="false" />
+                </div>
+              </label>
+              <label class="field">
+                <span>Caixinha</span>
+                <div class="field-row">
+                  <span class="prefix">R$</span>
+                  <input id="caixinha" type="text" inputmode="decimal" enterkeyhint="done" autocomplete="off" autocapitalize="off" spellcheck="false" />
+                </div>
+              </label>
+            </div>
+          </details>
+        </div>
+
+        <div class="calc-col">
+          <section id="resultado" class="card resultado" aria-live="polite">
+            <p id="resultado-vazio" class="hint aviso-preenchimento">Informe o peso e o preço bruto para calcular.</p>
+            <dl id="resultado-valores" class="hidden">
+              <div class="linha-custo"><dt>Custo do banho</dt><dd id="out-banho">—</dd></div>
+              <div class="linha-custo"><dt>Custo do verniz</dt><dd id="out-verniz">—</dd></div>
+              <div class="linha-custo"><dt>Custos adicionais</dt><dd id="out-extras">—</dd></div>
+              <div class="linha-total"><dt>Custo total</dt><dd id="out-total">—</dd></div>
+              <div class="linha-venda"><dt>Preço de venda</dt><dd id="out-venda">—</dd></div>
+            </dl>
+          </section>
+        </div>
+
+        <details class="card calc-span card-banho" id="precificacao-banho">
+          <summary>Precificação banho (milésimo) <small id="resumo-banho"></small></summary>
+          <p class="hint">No dia a dia, escolha o milésimo acima. Abra aqui só para conferir ou editar os índices.</p>
+          <div class="tabela-wrap">
+            <table class="tabela tabela-banho">
+              <thead>
+                <tr>
+                  <th>Espessura</th>
+                  <th>Índice</th>
+                  <th>Custo</th>
+                </tr>
+              </thead>
+              <tbody id="tabela-banho"></tbody>
+            </table>
+          </div>
+        </details>
+      </main>
+
+      <aside id="preco-final" class="preco-final hidden" aria-live="polite">
+        <span>Preço final</span>
+        <strong id="out-final">—</strong>
+      </aside>
+
+      <main id="view-config" class="view hidden">
+        <section class="card">
+          <h2>Precificação</h2>
+          <p class="hint">Ouro do dia, índices de banho e verniz ficam na tela inicial.</p>
+          <label class="field">
+            <span>Modo de precificação</span>
+            <select id="modo">
+              <option value="REGRA_DA_PLANILHA">Regra da Planilha</option>
+              <option value="REGRA_MATEMATICA">Regra Matemática</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Método de arredondamento</span>
+            <select id="arredondamento" disabled>
+              <option value="ARREDONDAMENTO_DA_PLANILHA">Arredondamento da planilha</option>
+            </select>
+          </label>
+          <p class="hint">Na V1 só existe o arredondamento da planilha.</p>
+          <label class="field">
+            <span>Fator de venda padrão</span>
+            <div class="field-row">
+              <input id="fator-padrao" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" autocapitalize="off" spellcheck="false" />
+              <span class="suffix">%</span>
+            </div>
+          </label>
+        </section>
+
+        <section class="card">
+          <h2>Custos padrão</h2>
+          <p class="hint">Usados ao abrir a calculadora. Não travam a peça atual.</p>
+          <label class="field">
+            <span>Tag</span>
+            <input id="padrao-tag" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <label class="field">
+            <span>Certificado de garantia</span>
+            <input id="padrao-certificado" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <label class="field">
+            <span>Saquinho plástico</span>
+            <input id="padrao-saquinho" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <label class="field">
+            <span>Sacola para presente</span>
+            <input id="padrao-sacola" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <label class="field">
+            <span>Caixinha</span>
+            <input id="padrao-caixinha" type="text" inputmode="decimal" enterkeyhint="done" autocomplete="off" autocapitalize="off" spellcheck="false" />
+          </label>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

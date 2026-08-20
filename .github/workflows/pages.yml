@@ -1,0 +1,59 @@
+name: Publicar site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Testar
+        run: npm test
+
+      - name: Compilar
+        run: npm run build
+
+      - name: Garantir .nojekyll no site publicado
+        run: touch dist/.nojekyll
+
+      - name: Conferir que a planilha não entrou no site
+        run: |
+          if find dist -iname '*.xlsx' -o -iname '*.xls' | grep -q .; then
+            echo "Planilha encontrada; recusando publicação."
+            exit 1
+          fi
+
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
