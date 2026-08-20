@@ -9,14 +9,6 @@
     <meta name="theme-color" content="#f3eee7" />
     <meta name="description" content="Calculadora de precificação de semijoias" />
     <title>Precificador de Semijoias</title>
-    <script>
-      try {
-        document.documentElement.dataset.tema =
-          localStorage.getItem("precificador-semijoias-v1-tema") === "noite" ? "noite" : "dia";
-      } catch (erro) {
-        document.documentElement.dataset.tema = "dia";
-      }
-    </script>
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
   </head>
@@ -28,9 +20,6 @@
           <h1 id="titulo-tela">Calculadora</h1>
         </div>
         <div class="topbar-acoes">
-          <button type="button" id="btn-tema" class="nav-btn" aria-pressed="false">
-            Noite
-          </button>
           <a id="link-nav" class="nav-btn" href="#/config" aria-label="Abrir configurações">
             Configurações
           </a>

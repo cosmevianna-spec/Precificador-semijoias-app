@@ -18,19 +18,6 @@
   font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-html[data-tema="noite"] {
-  color-scheme: dark;
-  --bg: #12110f;
-  --surface: #1c1a18;
-  --ink: #f3eee7;
-  --muted: #b9aea3;
-  --line: #3d3731;
-  --accent: #d4a574;
-  --field-bg: #2a2622;
-  --chip-on: #efd3a2;
-  --chip-on-text: #1a1510;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -150,13 +137,6 @@ h2 {
 
 .calc-span {
   grid-column: 1 / -1;
-}
-
-.card-ouro,
-.card-extras,
-.card-banho,
-.resultado {
-  color-scheme: light;
 }
 
 .card-ouro {

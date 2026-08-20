@@ -2,8 +2,7 @@ import "./styles.css";
 import { aplicarEntradaCamera, calcular, custosBanhoPorEspessura, MILESIMOS, pecaInicial } from "./engine";
 import type { Configuracoes, EntradaCamera, PecaInput } from "./engine";
 import { formatarMoeda, parseNumero, textoOuVazio } from "./format";
-import { carregarConfiguracoes, carregarTema, milesimoValido, salvarConfiguracoes, salvarTema } from "./storage";
-import type { Tema } from "./storage";
+import { carregarConfiguracoes, milesimoValido, salvarConfiguracoes } from "./storage";
 
 function $(id: string): HTMLElement {
   const el = document.getElementById(id);
@@ -375,30 +374,7 @@ function ligarEnterEntreCampos(): void {
   $("precificacao-banho").addEventListener("toggle", atualizarEnterKeyHint);
 }
 
-function aplicarTema(tema: Tema): void {
-  document.documentElement.dataset.tema = tema;
-  const botao = $("btn-tema") as HTMLButtonElement;
-  const ehNoite = tema === "noite";
-  botao.setAttribute("aria-pressed", String(ehNoite));
-  botao.textContent = ehNoite ? "Dia" : "Noite";
-  const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) {
-    meta.setAttribute("content", ehNoite ? "#12110f" : "#f3eee7");
-  }
-}
-
-function ligarTema(): void {
-  aplicarTema(carregarTema());
-  $("btn-tema").addEventListener("click", () => {
-    const atual = document.documentElement.dataset.tema === "noite" ? "noite" : "dia";
-    const proximo: Tema = atual === "noite" ? "dia" : "noite";
-    salvarTema(proximo);
-    aplicarTema(proximo);
-  });
-}
-
 function iniciar(): void {
-  ligarTema();
   montarMilesimos();
   montarTabelaBanho();
   preencherFormularioPeca();
