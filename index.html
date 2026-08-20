@@ -61,8 +61,26 @@
         <div class="calc-col">
           <form id="form-calc" class="card campos" aria-label="Dados da peça">
             <label class="field campo-destaque">
-              <span>Peso bruto</span>
+              <span>Preço do produto bruto</span>
               <p id="resultado-vazio" class="aviso-preenchimento" aria-live="polite">Informe o peso e o preço bruto para calcular.</p>
+              <div class="field-row">
+                <span class="prefix">R$</span>
+                <input
+                  id="preco-bruto"
+                  type="text"
+                  inputmode="decimal"
+                  enterkeyhint="next"
+                  autocomplete="off"
+                  autocapitalize="off"
+                  autocorrect="off"
+                  spellcheck="false"
+                  placeholder="0,00"
+                />
+              </div>
+            </label>
+
+            <label class="field campo-destaque">
+              <span>Peso bruto</span>
               <div class="field-row">
                 <input
                   id="peso"
@@ -83,24 +101,6 @@
               <legend>Milésimo / Espessura</legend>
               <div id="milesimos" class="chips" role="radiogroup" aria-label="Milésimo"></div>
             </fieldset>
-
-            <label class="field campo-destaque">
-              <span>Preço do produto bruto</span>
-              <div class="field-row">
-                <span class="prefix">R$</span>
-                <input
-                  id="preco-bruto"
-                  type="text"
-                  inputmode="decimal"
-                  enterkeyhint="next"
-                  autocomplete="off"
-                  autocapitalize="off"
-                  autocorrect="off"
-                  spellcheck="false"
-                  placeholder="0,00"
-                />
-              </div>
-            </label>
 
             <label class="field campo-secundario">
               <span>Fator de venda</span>
