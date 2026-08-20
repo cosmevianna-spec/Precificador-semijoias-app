@@ -192,7 +192,7 @@ function atualizarPendencias(): void {
 
   const vazio = $("resultado-vazio");
   if (!pesoOk && !brutoOk) {
-    vazio.textContent = "Informe o peso e o preço bruto para calcular.";
+    vazio.textContent = "Informe o preço e o peso bruto para calcular.";
   } else if (!pesoOk) {
     vazio.textContent = "Informe o peso da peça.";
   } else if (!brutoOk) {
