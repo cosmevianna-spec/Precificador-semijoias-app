@@ -56,3 +56,15 @@ export function salvarConfiguracoes(config: Configuracoes): void {
 export function milesimoValido(valor: number): Milesimo {
   return ehMilesimo(valor) ? valor : 1;
 }
+
+const CHAVE_TEMA = "precificador-semijoias-v1-tema";
+
+export type Tema = "dia" | "noite";
+
+export function carregarTema(): Tema {
+  return localStorage.getItem(CHAVE_TEMA) === "noite" ? "noite" : "dia";
+}
+
+export function salvarTema(tema: Tema): void {
+  localStorage.setItem(CHAVE_TEMA, tema);
+}

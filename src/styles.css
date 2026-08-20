@@ -635,3 +635,25 @@ details[open] summary {
     font-size: 16px;
   }
 }
+
+html[data-tema="noite"] {
+  --bg: #161410;
+}
+
+html[data-tema="noite"] .eyebrow {
+  color: #c4b8ac;
+}
+
+html[data-tema="noite"] .topbar h1 {
+  color: #f3eee7;
+}
+
+html[data-tema="noite"] .nav-btn {
+  background: #241f1b;
+  color: #f3eee7;
+  border-color: #a3988c;
+}
+
+html[data-tema="noite"] .card:not(.card-ouro):not(.card-extras):not(.card-banho):not(.resultado) {
+  border-color: #a3988c;
+}
