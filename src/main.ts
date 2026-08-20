@@ -203,6 +203,9 @@ function atualizarPendencias(): void {
 
 function renderResultado(): void {
   const vazio = $("resultado-vazio");
+  const layout = $("view-calculadora");
+  const coluna = $("coluna-resultado");
+  const painel = $("resultado");
   const valores = $("resultado-valores");
   const faixa = $("preco-final");
   atualizarCustosTabela();
@@ -211,6 +214,9 @@ function renderResultado(): void {
 
   if (telaConfig() || !pecaPronta()) {
     vazio.classList.remove("hidden");
+    layout.classList.add("aguardando-dados");
+    coluna.classList.add("hidden");
+    painel.classList.add("hidden");
     valores.classList.add("hidden");
     faixa.classList.add("hidden");
     return;
@@ -218,6 +224,9 @@ function renderResultado(): void {
 
   const resultado = calcular(peca, parametros());
   vazio.classList.add("hidden");
+  layout.classList.remove("aguardando-dados");
+  coluna.classList.remove("hidden");
+  painel.classList.remove("hidden");
   valores.classList.remove("hidden");
   faixa.classList.remove("hidden");
   $("out-banho").textContent = formatarMoeda(resultado.custo_banho);

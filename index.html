@@ -51,6 +51,7 @@
           <form id="form-calc" class="card campos" aria-label="Dados da peça">
             <label class="field campo-destaque">
               <span>Peso bruto</span>
+              <p id="resultado-vazio" class="aviso-preenchimento" aria-live="polite">Informe o peso e o preço bruto para calcular.</p>
               <div class="field-row">
                 <input
                   id="peso"
@@ -151,9 +152,8 @@
           </details>
         </div>
 
-        <div class="calc-col">
-          <section id="resultado" class="card resultado" aria-live="polite">
-            <p id="resultado-vazio" class="hint aviso-preenchimento">Informe o peso e o preço bruto para calcular.</p>
+        <div id="coluna-resultado" class="calc-col hidden">
+          <section id="resultado" class="card resultado hidden" aria-live="polite">
             <dl id="resultado-valores" class="hidden">
               <div class="linha-custo"><dt>Custo do banho</dt><dd id="out-banho">—</dd></div>
               <div class="linha-custo"><dt>Custo do verniz</dt><dd id="out-verniz">—</dd></div>
